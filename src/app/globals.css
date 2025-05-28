@@ -1,42 +1,171 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+    --font-oxanium: "Oxanium", sans-serif;
+    --font-jakarta: "Plus Jakarta Sans", sans-serif;
+    --color-mainBlack: #040314;
+    --color-mainPurple: #7A09C1;
+    --color-darkPurple: #3A045B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.logo-shadow {
+    filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.38));
+    -webkit-filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.38));
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+.box-shadow-timeline {
+    box-shadow : 3px 4px 15px 0 rgba(255,255,255, 0.38);
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.shadow-text {
+    text-shadow: 17px 15px 1px rgba(0,0,0, 0.50);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.drop-shadow-text {
+    filter: drop-shadow(17px 15px 0.5px rgba(0,0,0, 0.50));
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.navbar-fixed {
+    @apply fixed z-[999];
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.shadow-green-glow {
+    box-shadow: 0 0 200px 120px rgba(0, 212, 255, 0.5);
+}
+
+.shadow-purple-glow {
+    box-shadow: 0 0 200px 150px rgba(122, 9, 193);
+}
+
+.menu-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: height 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.menu-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Efek aktif saat class active (hover state true) */
+.menu-link.active::before {
+    height: 100%;
+}
+
+.menu-link.active::after {
+    width: 100%;
+}
+
+#hero h1 {
+    color: transparent;
+    text-shadow: 8px 4px 3px rgba(255,255,255), 0 0 #d6d4d4, 
+    0px 4px 0px #d6d4d4, 8px 0px 0px #d6d4d4, 17px 15px 1px rgba(0, 0, 0, 0.25);
+}
+
+#about h1 {
+    color: transparent;
+    text-shadow: 2px 0px 3px rgba(255,255,255), 1px 0px #d6d4d4, 
+    0px 0px 0px #d6d4d4, 3px 0px 0px #d6d4d4, 17px 15px 1px rgba(0, 0, 0, 0.25);
+}
+
+#hero p {
+    text-shadow: 10px 8px 1px rgba(0, 0, 0, 0.25);
+}
+
+.card {
+    width: 230px;
+    border-radius: 20px;
+    background: #1b233d;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: rgba(255,255,255, 0.2) 0px 7px 20px 2px;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card .top-section {
+    height: 150px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+    position: relative;
+}
+
+.card .top-section .border {
+    border-bottom-right-radius: 10px;
+    height: 30px;
+    width: 130px;
+    background: white;
+    background: #1b233d;
+    position: relative;
+    transform: skew(-40deg);
+    box-shadow: -10px -10px 0 0 #1b233d;
+}
+
+.card .top-section .border::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 0;
+    right: -15px;
+    background: rgba(255, 255, 255, 0);
+    border-top-left-radius: 10px;
+    box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+.card .top-section::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border-top-left-radius: 15px;
+    box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+.card .top-section .icons {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .top-section .icons .logo .top-section {
+    height: 100%;
+}
+
+.card .top-section .icons .social-media {
+    height: 100%;
+    padding: 8px 15px;
+    display: flex;
+    gap: 7px;
 }

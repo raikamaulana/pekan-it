@@ -69,7 +69,7 @@ export default function OurAvatar() {
                     <p className='mt-2 bg-gradient-to-r from-[#6a58cc] to-[#BD63D1] bg-clip-text text-transparent text-4xl'>Transformasi digital & <span className='block'>kecerdasan adaptif</span></p>
                 </div>
             </div>
-            <div className="absolute bottom-15 left-55 w-[1px] h-[1px] rounded-full bg-red-500 shadow-purple-glow-2 z-1"></div>
+            <div className="absolute bottom-15 left-55 w-[1px] h-[1px] rounded-full shadow-purple-glow-2 z-1"></div>
         </section>
         </>
     )
